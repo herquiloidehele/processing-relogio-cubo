@@ -5,7 +5,7 @@ Button on_button1,on_button2,on_button3, on_button4, on_button5, on_button6;  //
 int clk = 1;       // number of times the button is clicked
   
 void setup()  { 
-  size(900, 0, P3D); 
+  size(900, 700, P3D); 
   noStroke(); 
   smooth();
   colorMode(RGB, 1); 
