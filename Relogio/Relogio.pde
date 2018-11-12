@@ -1,4 +1,4 @@
-z
+
   /**
   * Variáveis que controlam o tamanho dos ponteiros 
   * Minuto, segundo e Hora
@@ -10,7 +10,7 @@ z
 
 
 void setup(){
- size(800, 600);
+ size(800, 600, P3D);
  background(227,222,222 );
  smooth();
 }
@@ -52,7 +52,7 @@ void marcadores(){
   pushMatrix();
   for(int i = 0; i<60; i++){
     if(i%5 == 0)
-      marcadoresGrandes();
+      marcadoresGrandes(i);
     else
       marcadoresPequenos();
       
@@ -70,15 +70,36 @@ void marcadoresPequenos(){
   strokeWeight(1);
   line(170, 0, 185, 0);
   
+ 
+  
 }
 
 /**
  * Desenha os marcadores de horas 
  */
-void marcadoresGrandes(){
+void marcadoresGrandes(int i){
   stroke(0);
   strokeWeight(3);
-  line(170, 0, 170, 0);
+  line(200, 0, 170, 0);
+  
+  pushMatrix();
+  rotate(radians(270));
+  fill(0);
+  textSize(20);
+  if(i == 0 ){
+    //pushMatrix();
+    //translate(138, 0);
+    //rotateX(radians(90));
+    text(12, 138, 0);
+    //popMatrix();
+  }else{
+    //pushMatrix();
+    //translate(138, 0);
+    //rotateX(radians(90));
+    text(i/5, 138, 0);
+    //popMatrix();
+  }
+  popMatrix();
 }
 
 
