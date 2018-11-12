@@ -1,4 +1,4 @@
-
+z
   /**
   * Variáveis que controlam o tamanho dos ponteiros 
   * Minuto, segundo e Hora
