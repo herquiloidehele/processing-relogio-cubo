@@ -1,29 +1,41 @@
+PGraphics pg;
+
+  /**
+  * Variáveis que controlam o tamanho dos ponteiros 
+  * Minuto, segundo e Hora
+  * 
+  */
  int tamanhoSegundo = 125;
  int tamanhoMinuto = 125;
-int  tamanhoHora = 125;
+ int  tamanhoHora = 125;
 
 
 void setup(){
- size(800, 600, OPENGL);
+ size(800, 600);
  background(227,222,222 );
+ pg = createGraphics(100, 100);
  smooth();
- 
 }
 
 void draw(){
-  if(keyPressed){
-   if(key == ' ')
-     exit();
- }
+  relogioText();
+  
   circunferencia();
-  Todosponteiros();
-  //relogioText();
+  marcadores();
+  ponteiroSegundos();
+  ponteiroMinuto();
+  ponteiroHora();
+  
+  //clear();
+  sair(); 
 }
 
 
-//Desenha a circunferencia do relogio
+/**
+ * Desenha a circunferencia do relogio
+ */
 void circunferencia(){
-  pushMatrix(); //salva o estado actual da matrix
+  pushMatrix();
   fill(255);
   stroke(0);
   strokeWeight(7);
@@ -32,39 +44,49 @@ void circunferencia(){
 }
 
 
-//Desenhar todos os Ponteiros do relógio
-void Todosponteiros(){
+/**
+ * Desenha todos os marcadores do relogio,
+ * Os marcadores de segundos possuem um tamanho pequeno
+ * Os marcadores de horas possuem um tamanho maior
+ */
+void marcadores(){
   translate(width/2,height/2);
   pushMatrix();
   for(int i = 0; i<60; i++){
     if(i%5 == 0)
-      ponteirosGrandes();
+      marcadoresGrandes();
     else
-      ponteirosPequenos();
+      marcadoresPequenos();
       
     rotate(radians(6));
   }
   popMatrix();
-
-  ponteiroSegundos();
-  ponteiroMinuto();
-  ponteiroHora();
 }
 
-void ponteirosPequenos(){
+
+/**
+ * Desenha os marcadores de segundos 
+ */
+void marcadoresPequenos(){
   stroke(0);
   strokeWeight(1);
   line(170, 0, 185, 0);
   
 }
 
-void ponteirosGrandes(){
+/**
+ * Desenha os marcadores de horas 
+ */
+void marcadoresGrandes(){
   stroke(0);
   strokeWeight(3);
-  line(100, 0, 200, 0);
+  line(170, 0, 170, 0);
 }
 
 
+/**
+ * Desenha o ponteiro de segundo
+ */
 void ponteiroSegundos(){
   pushMatrix();
   rotate(radians(6*second() - 90));
@@ -81,6 +103,10 @@ void ponteiroSegundos(){
   popMatrix();
 }
 
+
+/**
+ * Desenha o ponteiro de minutos
+ */
 void ponteiroMinuto(){
   pushMatrix();
   rotate(radians(6*(minute() + second()/60) - 90)); 
@@ -97,6 +123,11 @@ void ponteiroMinuto(){
   popMatrix();
 }
 
+
+
+/**
+ * Desenha o ponteiro de hora
+ */
 void ponteiroHora(){
   pushMatrix();
   rotate(radians(30*(hour() + minute()/60) - 90)); 
@@ -115,15 +146,35 @@ void ponteiroHora(){
 }
 
 
+/**
+ * Desenha as horas em texto puro na tela
+*/
 void relogioText(){
-    
+  clear();
+  background(227,222,222 );
   pushMatrix();
+  translate(0,0);
+  //rotate()r;
   int hora = hour();
   int minutos = minute();
   int segundos = second();
   
-  stroke(0);
+  stroke(23);
+  fill(0, 102, 153);
   textSize(50);
-  text(hora + " : " + minutos + " : " + segundos, 0, 0 );
+  text(hora + " : " + minutos + " : " + segundos, 260, 575 );
   popMatrix();
+  
+ 
+}
+
+
+/**
+ * Sai do programa quando clicado em espaço
+*/
+void sair(){
+  if(keyPressed){
+   if(key == ' ')
+     exit();
+ }
 }
