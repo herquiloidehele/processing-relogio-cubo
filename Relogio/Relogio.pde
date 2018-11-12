@@ -1,4 +1,3 @@
-PGraphics pg;
 
   /**
   * Variáveis que controlam o tamanho dos ponteiros 
@@ -13,7 +12,6 @@ PGraphics pg;
 void setup(){
  size(800, 600);
  background(227,222,222 );
- pg = createGraphics(100, 100);
  smooth();
 }
 
