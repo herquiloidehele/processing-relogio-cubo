@@ -1,21 +1,40 @@
 float xmag, ymag = 0;
 float newXmag, newYmag, rotateVar = 0; 
 
-Button on_button;  // the button
+Button on_button1,on_button2,on_button3, on_button4, on_button5, on_button6;  // the button
 int clk = 1;       // number of times the button is clicked
   
 void setup()  { 
-  size(800, 600, P3D); 
+  size(900, 0, P3D); 
   noStroke(); 
+  smooth();
   colorMode(RGB, 1); 
+  
+   // create the button object
+  on_button1 = new Button("Remover face 1", 20, 20, 100, 50);
+  on_button2 = new Button("Remover face 2", 150, 20, 100, 50);
+  on_button3 = new Button("Remover face 3", 280, 20, 100, 50);
+  on_button4 = new Button("Remover face 4", 430, 20, 100, 50);
+  on_button5 = new Button("Remover face 5", 580, 20, 100, 50);
+  on_button6 = new Button("Remover face 6", 730, 20, 100, 50);
+  
 }
  
 void draw()  { 
   background(0.5);
+ 
+ pushMatrix();
+   // draw the button in the window
+  on_button1.Draw();
+  on_button2.Draw();
+  on_button3.Draw();
+  on_button4.Draw();
+  on_button5.Draw();
+  on_button6.Draw();
+ 
+ popMatrix();
   
-   // create the button object
-  on_button = new Button("Clica me", width+100, height+100, 100, 50);
-  
+ 
   pushMatrix(); 
   translate(width/2, height/2, -100); 
   
@@ -58,10 +77,10 @@ void draw()  {
   endShape();
   
   rotateVar +=0.06;
+ 
   popMatrix(); 
+  
 } 
-
-
 
 
 // the Button class
@@ -82,18 +101,11 @@ class Button {
   }
   
   void Draw() {
+    stroke(255);
     fill(255);
-    stroke(141);
     rect(x, y, w, h, 10);
     textAlign(CENTER, CENTER);
     fill(0);
     text(label, x + (w / 2), y + (h / 2));
-  }
-  
-  boolean MouseIsOver() {
-    if (mouseX > x && mouseX < (x + w) && mouseY > y && mouseY < (y + h)) {
-      return true;
-    }
-    return false;
   }
 }
