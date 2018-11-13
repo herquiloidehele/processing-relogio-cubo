@@ -10,7 +10,7 @@
 
 
 void setup(){
- size(800, 600, P3D);
+ size(800, 600);
  background(227,222,222 );
  smooth();
 }
