@@ -1,7 +1,6 @@
 
 boolean face1 = true, face2 = true, face3 = true, face4 = true, face5 = true, face6 = true;
-float newXmag, newYmag, rotateVar = 0; 
-int clk = 1;
+float rotateVar = 0; 
 
 
 void setup() { 
@@ -25,8 +24,9 @@ void draw() {
   text("Remover face 4 (4)", 20, 170);
   fill(1, 0, 1); 
   text("Remover face 5 (5)", 20, 210);
-  fill(1, 0, 1);
-  text("Remover face 6 (6)", 20, 250); 
+  fill(1, 0, 0);
+  text("Remover face 6 (6)", 20, 250);
+   fill(0, 0, 0); 
   text("Prencher cubo  (T)", 20, 290);
   popMatrix();
 
