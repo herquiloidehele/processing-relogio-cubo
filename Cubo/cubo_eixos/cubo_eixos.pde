@@ -28,11 +28,9 @@ void draw() {
 
   translate(width/2, height/2, -50); 
 
- if(mousePressed){
     rotateY(radians(mouseX));
     rotateZ(radians(mouseX));
     rotateX(radians(mouseX));
- }
 
   desenharEixos();
   noStroke();
