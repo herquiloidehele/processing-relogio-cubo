@@ -14,13 +14,20 @@ void draw() {
   background(0.5);
 
   pushMatrix();
-  text("Remover face 1 (1)", 20, 20);
-  text("Remover face 2 (2)", 150, 20);
-  text("Remover face 3 (3)", 280, 20);
-  text("Remover face 4 (4)", 430, 20);
-  text("Remover face 5 (5)", 580, 20);
-  text("Remover face 6 (6)", 730, 20);
-  text("Prencher cubo (T)", 880, 20);
+  textSize(25);
+  fill(0, 1, 1); 
+  text("Remover face 1 (1)", 20, 50);
+  fill(1, 1, 1);
+  text("Remover face 2 (2)", 20, 90);
+  fill(1, 1, 0);
+  text("Remover face 3 (3)", 20, 130);
+  fill(0, 1, 0);
+  text("Remover face 4 (4)", 20, 170);
+  fill(1, 0, 1); 
+  text("Remover face 5 (5)", 20, 210);
+  fill(1, 0, 1);
+  text("Remover face 6 (6)", 20, 250); 
+  text("Prencher cubo  (T)", 20, 290);
   popMatrix();
 
   eventos();
