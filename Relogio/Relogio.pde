@@ -6,7 +6,7 @@
   */
  int tamanhoSegundo = 125;
  int tamanhoMinuto = 125;
- int tamanhoHora = 125;
+ int tamanhoHora = 80;
  int rotarNumeros = 0;
 
 
@@ -86,9 +86,9 @@ void marcadoresPequenos(int i){
  * Desenha os marcadores de horas
  */
 void marcadoresGrandes(int i){
-  stroke(0);
-  strokeWeight(3);
-  line(200, 0, 170, 0);
+  stroke(155,0,0);
+  strokeWeight(4);
+  line(194, 0, 170, 0);
 
   pushMatrix();
   rotate(radians(270));
@@ -130,7 +130,7 @@ void ponteiroSegundos(){
 void ponteiroMinuto(){
   pushMatrix();
   rotate(radians(6*(minute() + second()/60) - 90));
-  stroke(0,255,0);
+  stroke(0,0,0);
   strokeWeight(3);
   line(0,0, tamanhoMinuto,0);
 
@@ -151,7 +151,7 @@ void ponteiroMinuto(){
 void ponteiroHora(){
   pushMatrix();
   rotate(radians(30*(hour() + minute()/60) - 90));
-  stroke(0,0,266);
+  stroke(0,0,0);
   strokeWeight(5);
   line(0,0,tamanhoHora,0);
 
@@ -174,7 +174,6 @@ void relogioText(){
   background(227,222,222 );
   pushMatrix();
   translate(0,0);
-  //rotate()r;
   int hora = hour();
   int minutos = minute();
   int segundos = second();
@@ -182,7 +181,7 @@ void relogioText(){
   stroke(23);
   fill(0, 102, 153);
   textSize(50);
-  text(hora + " : " + minutos + " : " + segundos, 260, 575 );
+  text(hora + " : " + minutos + " : " + segundos, width/2, 575 );
   popMatrix();
 
 
