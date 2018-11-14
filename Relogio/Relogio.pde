@@ -6,7 +6,8 @@
   */
  int tamanhoSegundo = 125;
  int tamanhoMinuto = 125;
- int  tamanhoHora = 125;
+ int tamanhoHora = 125;
+ int rotarNumeros = 0;
 
 
 void setup(){
@@ -24,7 +25,13 @@ void draw(){
   ponteiroMinuto();
   ponteiroHora();
 
-  //clear();
+  pushMatrix();
+  strokeWeight(15);
+  fill(255,0,0);
+  point(0,0);
+  popMatrix();
+
+
   sair();
 }
 
@@ -35,7 +42,7 @@ void draw(){
 void circunferencia(){
   pushMatrix();
   fill(255);
-  stroke(0);
+  stroke(247,7, 7);
   strokeWeight(7);
   ellipse(width/2, height/2, 400, 400);
   popMatrix();
@@ -54,9 +61,11 @@ void marcadores(){
     if(i%5 == 0)
       marcadoresGrandes(i);
     else
-      marcadoresPequenos();
+      marcadoresPequenos(i);
 
     rotate(radians(6));
+    //if(3 == i/5 || 6 == i/6)
+    //  println(i);
   }
   popMatrix();
 }
@@ -65,13 +74,12 @@ void marcadores(){
 /**
  * Desenha os marcadores de segundos
  */
-void marcadoresPequenos(){
+void marcadoresPequenos(int i){
   stroke(0);
   strokeWeight(1);
   line(170, 0, 185, 0);
-
-
-
+  
+  
 }
 
 /**
@@ -85,19 +93,12 @@ void marcadoresGrandes(int i){
   pushMatrix();
   rotate(radians(270));
   fill(0);
-  textSize(20);
+  textSize(15);
+  textAlign(CENTER);
   if(i == 0 ){
-    //pushMatrix();
-    //translate(138, 0);
-    //rotateX(radians(90));
     text(12, 138, 0);
-    //popMatrix();
   }else{
-    //pushMatrix();
-    //translate(138, 0);
-    //rotateX(radians(90));
-    text(i/5, 138, 0);
-    //popMatrix();
+    text(i/5, 150, 0);
   }
   popMatrix();
 }
