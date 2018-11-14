@@ -1,39 +1,64 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class cubo_simples extends PApplet {
+
 
 boolean face1 = true, face2 = true, face3 = true, face4 = true, face5 = true, face6 = true;
 float rotateVar = 0;
 
 
-void setup() {
-  size(1000, 700, P3D);
-  smooth();
+public void setup() {
+  
+  
   colorMode(RGB, 1);
 
 }
 
-void draw() {
-  background(0.5);
+public void draw() {
+  background(0.5f);
 
   pushMatrix();
   textSize(25);
-  fill(1, 0, 0);
-  text("Eixo X", 20, 50);
+  fill(0, 1, 1);
+  text("Remover face 1 (1)", 20, 50);
+  fill(1, 1, 1);
+  text("Remover face 2 (2)", 20, 90);
+  fill(1, 1, 0);
+  text("Remover face 3 (3)", 20, 130);
   fill(0, 1, 0);
-  text("Eixo Y", 20, 90);
-  fill(0, 0, 1);
-  text("Eixo Z", 20, 130);
+  text("Remover face 4 (4)", 20, 170);
+  fill(1, 0, 1);
+  text("Remover face 5 (5)", 20, 210);
+  fill(1, 0, 0);
+  text("Remover face 6 (6)", 20, 250);
+   fill(0, 0, 0);
+  text("Prencher cubo  (T)", 20, 290);
   popMatrix();
 
+  eventos();
 
   pushMatrix();
+    noStroke();
 
   translate(width/2, height/2, -50);
 
-    rotateY(radians(mouseX));
-    rotateZ(radians(mouseX));
-    rotateX(radians(mouseX));
 
-  desenharEixos();
-  noStroke();
+
+  rotateX(rotateVar * 0.3f);
+  rotateY(rotateVar * 0.9f);
+
   scale(90);
   beginShape(QUADS);
 
@@ -104,15 +129,14 @@ void draw() {
   }
 
 
-
   endShape();
 
-  rotateVar +=0.06;
+  rotateVar +=0.06f;
 
   popMatrix();
 }
 
-void eventos() {
+public void eventos() {
 
   if (keyPressed) {
     if (key == '1')
@@ -137,21 +161,13 @@ void eventos() {
     }
   }
 }
-
-
-void desenharEixos()
-{
-    pushMatrix();
-    // X axis points right
-    stroke(1, 0, 0);
-    line(0, 1500, 0, 0, 0, 0);
-
-    // Y axis points up
-    stroke(0, 1, 0);
-    line(0, 0, 0, 1500, 0, 0);
-
-    // Z axis points backwards
-    stroke(0, 0, 1);
-    line(0, 0, 0, 0, 0, 1500);
-    popMatrix();
+  public void settings() {  size(1000, 700, P3D);  smooth(); }
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "cubo_simples" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
 }

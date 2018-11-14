@@ -1,3 +1,19 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class Relogio extends PApplet {
+
 
   /**
   * Variáveis que controlam o tamanho dos ponteiros
@@ -9,13 +25,13 @@
  int  tamanhoHora = 125;
 
 
-void setup(){
- size(800, 600);
+public void setup(){
+ 
  background(227,222,222 );
- smooth();
+ 
 }
 
-void draw(){
+public void draw(){
   relogioText();
 
   circunferencia();
@@ -32,7 +48,7 @@ void draw(){
 /**
  * Desenha a circunferencia do relogio
  */
-void circunferencia(){
+public void circunferencia(){
   pushMatrix();
   fill(255);
   stroke(0);
@@ -47,7 +63,7 @@ void circunferencia(){
  * Os marcadores de segundos possuem um tamanho pequeno
  * Os marcadores de horas possuem um tamanho maior
  */
-void marcadores(){
+public void marcadores(){
   translate(width/2,height/2);
   pushMatrix();
   for(int i = 0; i<60; i++){
@@ -65,7 +81,7 @@ void marcadores(){
 /**
  * Desenha os marcadores de segundos
  */
-void marcadoresPequenos(){
+public void marcadoresPequenos(){
   stroke(0);
   strokeWeight(1);
   line(170, 0, 185, 0);
@@ -77,7 +93,7 @@ void marcadoresPequenos(){
 /**
  * Desenha os marcadores de horas
  */
-void marcadoresGrandes(int i){
+public void marcadoresGrandes(int i){
   stroke(0);
   strokeWeight(3);
   line(200, 0, 170, 0);
@@ -106,7 +122,7 @@ void marcadoresGrandes(int i){
 /**
  * Desenha o ponteiro de segundo
  */
-void ponteiroSegundos(){
+public void ponteiroSegundos(){
   pushMatrix();
   rotate(radians(6*second() - 90));
   stroke(255,0,0);
@@ -126,7 +142,7 @@ void ponteiroSegundos(){
 /**
  * Desenha o ponteiro de minutos
  */
-void ponteiroMinuto(){
+public void ponteiroMinuto(){
   pushMatrix();
   rotate(radians(6*(minute() + second()/60) - 90));
   stroke(0,255,0);
@@ -147,7 +163,7 @@ void ponteiroMinuto(){
 /**
  * Desenha o ponteiro de hora
  */
-void ponteiroHora(){
+public void ponteiroHora(){
   pushMatrix();
   rotate(radians(30*(hour() + minute()/60) - 90));
   stroke(0,0,266);
@@ -168,7 +184,7 @@ void ponteiroHora(){
 /**
  * Desenha as horas em texto puro na tela
 */
-void relogioText(){
+public void relogioText(){
   clear();
   background(227,222,222 );
   pushMatrix();
@@ -191,9 +207,19 @@ void relogioText(){
 /**
  * Sai do programa quando clicado em espaço
 */
-void sair(){
+public void sair(){
   if(keyPressed){
    if(key == ' ')
      exit();
  }
+}
+  public void settings() {  size(800, 600);  smooth(); }
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "Relogio" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
 }
